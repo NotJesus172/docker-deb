@@ -1,5 +1,4 @@
 #!/bin/bash
-
 #   Install and run the portainer agent docker container:
 docker run -d \
   -p 9001:9001 \
