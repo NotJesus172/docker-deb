@@ -15,10 +15,10 @@ echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-#	Install docker packages
+#	Install docker packages:
 sudo nala update
 sudo nala install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-# Make all nested scripts executable
+# Make all nested scripts executable:
 sudo chmod +x docker-compose.sh
 sudo chmod +x portainer-server.sh
 sudo chmod +x portainer-agent.sh
@@ -26,41 +26,42 @@ sudo chmod +x portainer-agent.sh
 clear
 echo "Would you like to install docker-compose? (y/n)"
 read composeInstall
-if [ $composeInstall == "y" ]; then
-  echo "Very well, installing docker-compose."
-  sudo ./docker-compose.sh
-elif []; then
+if [[] $composeInstall == "y" || $composeInstall == "Y" ]]; then
   echo "Very well, installing docker-compose."
   sudo ./docker-compose.sh
 else
+  # Future install instructions:
   echo "Very well, docker-compose will NOT be installed now."
   echo "If you would like to install it in the future return to this directory and run './docker-compose.sh' to begin the installation."
   sleep 3
 fi
 # Portainer server install prompt:
 clear
-echo "Would you like to install the Portainer-Server Docker container? (y/n)"
+echo "Would you like to install the portainer-server Docker container? (y/n)"
 read serverInstall
-if [ $serverInstall == "y" ]; then
-    echo "Very well, installing the Portainer-Server Docker container."
-    sudo ./portainer-server.sh
-elif [ $serverInstall == "Y" ]; then
-    echo "Very well, installing the Portainer-Server Docker container."
+if [[ $serverInstall == "y" || $serverInstall == "Y" ]]; then
+  echo "Very well, installing the portainer-server Docker container."
+  sudo ./portainer-server.sh
 else
-    # Portainer agent install prompt:
-    clear
-    echo "Would you like to install the Portainer-Agent Docker container? (y/n)"
-    read agentInstall
-    if [ $agentInstall == "y" ]; then
-      echo "Very well, installing the Portainer-Agent Docker container."
-      # Install portainer agent docker container:
-      sudo ./portainer-agent.sh
-    elif [ $agentInstall == "Y" ]; then
-      echo "Very well, installing the Portainer-Agent Docker container."
-      # Install portainer agent docker container:
-      sudo ./portainer-agent.sh
-    fi
-    exit 1
+  # Future install instructions:
+  echo "Very well, portainer-server will NOT be installed now."
+  echo "If you would like to install it in the future return to this directory and run './portainer-server.sh' to begin the installation."
+  sleep 3
 fi
-# Install portainer server docker container:
-sudo ./portainer-server.sh
+# Portainer agent install prompt:
+clear
+echo "Would you like to install the Portainer-Agent Docker container? (y/n)"
+read agentInstall
+if [[] $agentInstall == "y" || $agentInstall == "Y" ]]; then
+  echo "Very well, installing the Portainer-Agent Docker container."
+  # Install portainer agent docker container:
+  sudo ./portainer-agent.sh
+else
+  # Future install instructions:
+  echo "Very well, portainer-agent will NOT be installed now."
+  echo "If you would like to install it in the future return to this directory and run './portainer-agent.sh' to begin the installation."
+  sleep 3
+fi
+# Clear before ending:
+clear
+echo "Installation complete."
