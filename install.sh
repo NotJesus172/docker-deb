@@ -26,8 +26,9 @@ sudo chmod +x portainer-agent.sh
 clear
 echo "Would you like to install docker-compose? (y/n)"
 read composeInstall
-if [[] $composeInstall == "y" || $composeInstall == "Y" ]]; then
+if [[ $composeInstall == "y" || $composeInstall == "Y" ]]; then
   echo "Very well."
+  # Install docker-compose:
   sudo ./docker-compose.sh
 else
   # Future install instructions:
@@ -37,10 +38,11 @@ else
 fi
 # Portainer server install prompt:
 clear
-echo "Would you like to install the portainer-server Docker container? (y/n)"
+echo "Would you like to install the portainer-server docker container? (y/n)"
 read serverInstall
 if [[ $serverInstall == "y" || $serverInstall == "Y" ]]; then
   echo "Very well."
+  # Install portainer server docker container:
   sudo ./portainer-server.sh
 else
   # Future install instructions:
@@ -50,9 +52,9 @@ else
 fi
 # Portainer agent install prompt:
 clear
-echo "Would you like to install the Portainer-Agent Docker container? (y/n)"
+echo "Would you like to install the portainer-agent docker container? (y/n)"
 read agentInstall
-if [[] $agentInstall == "y" || $agentInstall == "Y" ]]; then
+if [[ $agentInstall == "y" || $agentInstall == "Y" ]]; then
   echo "Very well."
   # Install portainer agent docker container:
   sudo ./portainer-agent.sh
