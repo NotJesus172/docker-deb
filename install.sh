@@ -27,7 +27,7 @@ clear
 echo "Would you like to install docker-compose? (y/n)"
 read composeInstall
 if [[] $composeInstall == "y" || $composeInstall == "Y" ]]; then
-  echo "Very well, installing docker-compose."
+  echo "Very well."
   sudo ./docker-compose.sh
 else
   # Future install instructions:
@@ -40,7 +40,7 @@ clear
 echo "Would you like to install the portainer-server Docker container? (y/n)"
 read serverInstall
 if [[ $serverInstall == "y" || $serverInstall == "Y" ]]; then
-  echo "Very well, installing the portainer-server Docker container."
+  echo "Very well."
   sudo ./portainer-server.sh
 else
   # Future install instructions:
@@ -53,7 +53,7 @@ clear
 echo "Would you like to install the Portainer-Agent Docker container? (y/n)"
 read agentInstall
 if [[] $agentInstall == "y" || $agentInstall == "Y" ]]; then
-  echo "Very well, installing the Portainer-Agent Docker container."
+  echo "Very well."
   # Install portainer agent docker container:
   sudo ./portainer-agent.sh
 else
