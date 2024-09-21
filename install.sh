@@ -1,11 +1,10 @@
 #!/bin/bash
 
 # Update and install nala:
-sudo apt-get update
+sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get install -y nala
 # Update and upgrade the system:
-sudo nala update
-sudo nala upgrade -y
+sudo nala update && sudo nala upgrade -y
 #	Install docker engine:
 sudo nala install -y curl ca-certificates
 sudo install -m 0755 -d /etc/apt/keyrings
