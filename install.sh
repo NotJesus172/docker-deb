@@ -17,10 +17,6 @@ echo \
 #	Install docker packages:
 sudo nala update
 sudo nala install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-# Make all nested scripts executable:
-sudo chmod +x docker-compose.sh
-sudo chmod +x portainer-server.sh
-sudo chmod +x portainer-agent.sh
 # Docker-compose install prompt:
 clear
 echo "Would you like to install docker-compose? (y/n)"
