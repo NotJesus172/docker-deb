@@ -31,14 +31,28 @@ else
   echo "If you would like to install it in the future return to this directory and run './docker-compose.sh' to begin the installation."
   sleep 3
 fi
-# Portainer server install prompt:
+# Portainer ee install prompt:
 clear
-echo "Would you like to install the portainer-server docker container? (y/n)"
-read serverInstall
-if [[ $serverInstall == "y" || $serverInstall == "Y" ]]; then
+echo "Would you like to install the portainer-ee docker container? (y/n)"
+read eeInstall
+if [[ $eeInstall == "y" || $eeInstall == "Y" ]]; then
   echo "Very well."
   # Install portainer server docker container:
-  sudo ./portainer-server.sh
+  sudo ./portainer-ee.sh
+else
+  # Future install instructions:
+  echo "Very well, portainer-server will NOT be installed now."
+  echo "If you would like to install it in the future return to this directory and run './portainer-server.sh' to begin the installation."
+  sleep 3
+fi
+# Portainer ce install prompt:
+clear
+echo "Would you like to install the portainer-ce docker container? (y/n)"
+read ceInstall
+if [[ $ceInstall == "y" || $ceInstall == "Y" ]]; then
+  echo "Very well."
+  # Install portainer server docker container:
+  sudo ./portainer-ce.sh
 else
   # Future install instructions:
   echo "Very well, portainer-server will NOT be installed now."
